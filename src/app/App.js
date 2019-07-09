@@ -2,12 +2,15 @@ import React from "react";
 import "./App.css";
 import Welcome from "./Welcome";
 import styled from "styled-components";
+import Layout from "./Layout";
+import Header from "./Header";
 
 function App() {
   return (
-    <div>
+    <Layout>
+      <Header />
       <Welcome />
-    </div>
+    </Layout>
   );
 }
 
