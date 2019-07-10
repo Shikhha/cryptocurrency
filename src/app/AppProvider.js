@@ -2,14 +2,17 @@ import React, { Component } from "react";
 const cc = require("cryptocompare");
 
 export const AppContext = React.createContext();
-
+const MAX_FAV = 10;
 export default class AppProvider extends Component {
   constructor(props) {
     super(props);
     this.state = {
       page: "Dashboard",
+      favourties: ["BTC", "ETH", "XMR", "DOGE"],
       ...this.savedSettings(),
       setPage: this.setPage,
+      addCoin: this.addCoin,
+      removeCoin: this.removeCoin,
       confirmFavourties: this.confirmFavourties
     };
   }
@@ -21,6 +24,25 @@ export default class AppProvider extends Component {
     let coins = await cc.coinList();
     this.setState({ coinList: coins.Data });
   };
+
+  addCoin = key => {
+    let favourties = [...this.state.favourties];
+    if (favourties.length < MAX_FAV) {
+      if (!favourties.includes(key)) {
+        favourties.push(key);
+        this.setState({ favourties });
+      }
+    }
+  };
+
+  removeCoin = key => {
+    let favourties = [...this.state.favourties];
+    this.setState({
+      favourties: favourties.filter(itemKey => {
+        return itemKey != key;
+      })
+    });
+  };
   setPage = page => {
     this.setState({ page });
   };
@@ -30,12 +52,16 @@ export default class AppProvider extends Component {
     if (!cryptoDashData) {
       return { page: "Settings", firstVisit: true };
     }
-    return {};
+    let { favourties } = cryptoDashData;
+    return { favourties };
   };
 
   confirmFavourties = () => {
     this.setState({ firstVisit: false, page: "Dashboard" });
-    localStorage.setItem("cryptoDash", JSON.stringify({ test: "hello" }));
+    localStorage.setItem(
+      "cryptoDash",
+      JSON.stringify({ favourties: this.state.favourties })
+    );
   };
 
   render() {
