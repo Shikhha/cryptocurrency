@@ -1,15 +1,18 @@
 import React from "react";
 import "./App.css";
-import Welcome from "./Welcome";
 import styled from "styled-components";
 import Layout from "./Layout";
 import Header from "./Header";
+import AppProvider from "./AppProvider";
+import Settings from "../settings";
 
 function App() {
   return (
     <Layout>
-      <Header />
-      <Welcome />
+      <AppProvider>
+        <Header />
+        <Settings />
+      </AppProvider>
     </Layout>
   );
 }
