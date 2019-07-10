@@ -4,10 +4,10 @@ import { AppContext } from "./AppProvider";
 
 const Head = styled.div`
   display: grid;
-  grid-template-columns: 100px auto 100px 100px;
+  grid-template-columns: 100px auto 90px 90px;
 `;
 const Logo = styled.div`
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 `;
 
 const DisplayButton = styled.div`
