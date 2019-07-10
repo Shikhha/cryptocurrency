@@ -19,7 +19,7 @@ export default class AppProvider extends Component {
   };
   fetchCoins = async () => {
     let coins = await cc.coinList();
-    console.log(coins.Data);
+    this.setState({ coinList: coins.Data });
   };
   setPage = page => {
     this.setState({ page });
