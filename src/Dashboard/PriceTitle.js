@@ -2,14 +2,14 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { SelectableTile } from "../shared/Tile";
 import { CoinHeaderGridStyled } from "../settings/CoinHeader";
-import { fontSize1 } from "../shared/Styles";
+import { fontSizeBig } from "../shared/Styles";
 
 const numberFormat = number => {
-  return +(number + "").slice(0, 5);
+  return +(number + "").slice(0, 7);
 };
 
 const TicketPrice = styled.div`
-  ${fontSize1}
+  ${fontSizeBig}
 `;
 const ChangePct = styled.div`
   color: green;
@@ -37,8 +37,8 @@ export default function({ price, index }) {
             {numberFormat(data.CHANGEPCT24HOUR)}
           </ChangePct>
         </div>
-        <TicketPrice>{numberFormat(data.PRICE)}</TicketPrice>
       </CoinHeaderGridStyled>
+      <TicketPrice>{numberFormat(data.PRICE)}</TicketPrice>
     </SelectableTile>
   );
 }
