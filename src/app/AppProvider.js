@@ -19,6 +19,7 @@ export default class AppProvider extends Component {
 
   componentDidMount = () => {
     this.fetchCoins();
+    this.fetchPrices();
   };
   fetchCoins = async () => {
     let coins = await cc.coinList();
@@ -27,11 +28,11 @@ export default class AppProvider extends Component {
 
   fetchPrices = async () => {
     if (this.state.firstVisit) return;
-    let prices = await this.prices();
-    this.setState({ prices: prices.Data });
-    console.log(prices.slice(0, 10));
+    let p = await this.getprices();
+    this.setState({ prices: p });
+    console.log(p);
   };
-  prices = async () => {
+  getprices = async () => {
     let returnData = [];
     for (let crypto of this.state.favourties) {
       try {

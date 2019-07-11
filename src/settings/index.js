@@ -10,7 +10,6 @@ export default function() {
       <CoinGrid topsection />
       <Welcome />
       <ConfirmButton />
-
       <CoinGrid />
     </Page>
   );
