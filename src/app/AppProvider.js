@@ -25,6 +25,25 @@ export default class AppProvider extends Component {
     this.setState({ coinList: coins.Data });
   };
 
+  fetchPrices = async () => {
+    if (this.state.firstVisit) return;
+    let prices = await this.prices();
+    this.setState({ prices: prices.Data });
+    console.log(prices.slice(0, 10));
+  };
+  prices = async () => {
+    let returnData = [];
+    for (let crypto of this.state.favourties) {
+      try {
+        let price = await cc.priceFull(crypto, "USD");
+        returnData.push(price);
+      } catch (err) {
+        console.warn("Fetch price error: ", err);
+      }
+    }
+    return returnData;
+  };
+
   addCoin = key => {
     let favourties = [...this.state.favourties];
     if (favourties.length < MAX_FAV) {
@@ -57,7 +76,9 @@ export default class AppProvider extends Component {
   };
 
   confirmFavourties = () => {
-    this.setState({ firstVisit: false, page: "Dashboard" });
+    this.setState({ firstVisit: false, page: "Dashboard" }, () => {
+      this.fetchPrices();
+    });
     localStorage.setItem(
       "cryptoDash",
       JSON.stringify({ favourties: this.state.favourties })
