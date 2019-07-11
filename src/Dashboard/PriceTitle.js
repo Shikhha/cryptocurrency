@@ -2,8 +2,17 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { SelectableTile } from "../shared/Tile";
 import { CoinHeaderGridStyled } from "../settings/CoinHeader";
-import { fontSizeBig } from "../shared/Styles";
+import { fontSizeBig, greenBoxShadow } from "../shared/Styles";
+import { AppContext } from "../app/AppProvider";
 
+const PriceSelectableTile = styled(SelectableTile)`
+  ${props =>
+    props.current &&
+    css`
+      ${greenBoxShadow}
+      pointer-events: none
+    `}
+`;
 const numberFormat = number => {
   return +(number + "").slice(0, 7);
 };
@@ -19,7 +28,7 @@ const ChangePct = styled.div`
       color: red;
     `}
 `;
-export default function({ price, index }) {
+export default function({ price, index, currentfav, setCurrentFav }) {
   let sym = Object.keys(price)[0];
   let data;
   if (!sym || !price[sym] || !price[sym]["USD"]) {
@@ -29,7 +38,10 @@ export default function({ price, index }) {
     data = price[sym]["USD"];
   }
   return (
-    <SelectableTile>
+    <PriceSelectableTile
+      current={currentfav === sym}
+      onClick={() => setCurrentFav(sym)}
+    >
       <CoinHeaderGridStyled>
         <div>{sym}</div>
         <div style={{ justifySelf: "right", color: "green" }}>
@@ -39,6 +51,6 @@ export default function({ price, index }) {
         </div>
       </CoinHeaderGridStyled>
       <TicketPrice>{numberFormat(data.PRICE)}</TicketPrice>
-    </SelectableTile>
+    </PriceSelectableTile>
   );
 }

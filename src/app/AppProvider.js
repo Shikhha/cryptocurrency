@@ -13,7 +13,8 @@ export default class AppProvider extends Component {
       setPage: this.setPage,
       addCoin: this.addCoin,
       removeCoin: this.removeCoin,
-      confirmFavourties: this.confirmFavourties
+      confirmFavourties: this.confirmFavourties,
+      setCurrentFav: this.setCurrentFav
     };
   }
 
@@ -72,17 +73,32 @@ export default class AppProvider extends Component {
     if (!cryptoDashData) {
       return { page: "Settings", firstVisit: true };
     }
-    let { favourties } = cryptoDashData;
-    return { favourties };
+    let { favourties, currentfav } = cryptoDashData;
+    return { favourties, currentfav };
   };
 
+  setCurrentFav = sym => {
+    this.setState({
+      currentfav: sym
+    });
+
+    localStorage.setItem(
+      "cryptoDash",
+      JSON.stringify({
+        ...JSON.parse(localStorage.getItem("cryptoDash")),
+        currentfav: sym
+      })
+    );
+  };
   confirmFavourties = () => {
-    this.setState({ firstVisit: false, page: "Dashboard" }, () => {
+    let currentfav = this.state.favourties[0];
+    console.log(currentfav);
+    this.setState({ firstVisit: false, page: "Dashboard", currentfav }, () => {
       this.fetchPrices();
     });
     localStorage.setItem(
       "cryptoDash",
-      JSON.stringify({ favourties: this.state.favourties })
+      JSON.stringify({ favourties: this.state.favourties, currentfav })
     );
   };
 

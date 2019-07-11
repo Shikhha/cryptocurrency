@@ -12,10 +12,15 @@ const Pgrid = styled.div`
 export default function() {
   return (
     <AppContext.Consumer>
-      {({ prices }) => (
+      {({ prices, currentfav, setCurrentFav }) => (
         <Pgrid>
           {prices.map((price, index) => (
-            <PriceTitle index={index} price={price} />
+            <PriceTitle
+              currentfav={currentfav}
+              setCurrentFav={setCurrentFav}
+              index={index}
+              price={price}
+            />
           ))}
         </Pgrid>
       )}
