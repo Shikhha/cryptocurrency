@@ -1,10 +1,21 @@
 import React from "react";
+import styled, { css } from "styled-components";
 
-export default function({ coin, style }) {
+const CoinTmageTag = styled.img`
+  height: 50px;
+  ${props =>
+    props.spotlight &&
+    css`
+      height: 200px;
+      margin: auto;
+      display: block;
+    `}
+`;
+export default function({ coin, style, spotlight }) {
   return (
-    <img
+    <CoinTmageTag
       alt={coin.CoinSymbol}
-      style={style || { height: "50px" }}
+      spotlight={spotlight}
       src={`http://cryptocompare.com/${coin.ImageUrl}`}
     />
   );

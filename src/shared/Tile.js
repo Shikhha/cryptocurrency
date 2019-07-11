@@ -6,6 +6,12 @@ import {
   redBoxShadow
 } from "./Styles";
 
+export const Tile = styled.div`
+  ${subtleBoxShadow}
+  ${lightBlueBackground}
+  padding: 10px;
+`;
+
 export const SelectableTile = styled.div`
   ${subtleBoxShadow}
   ${lightBlueBackground}
