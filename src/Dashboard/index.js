@@ -7,9 +7,14 @@ import PriceChart from "./PriceChart";
 
 const ChartGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 240px repeat(auto-fit, minmax(240px, 1fr));
   grid-gap: 15px;
   margin-top: 20px;
+  @media only screen and (max-width: 800px) {
+    grid-template-columns: 1fr;
+    
+    }
+  }
 `;
 
 export default function() {

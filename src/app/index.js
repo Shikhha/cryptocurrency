@@ -5,7 +5,7 @@ import Layout from "./Layout";
 import Header from "./Header";
 import AppProvider from "./AppProvider";
 import Settings from "../settings";
-import Content from "../shared/Content";
+import { SettingsContent, DashContent } from "../shared/Content";
 import Dashboard from "../Dashboard";
 
 function App() {
@@ -13,10 +13,13 @@ function App() {
     <Layout>
       <AppProvider>
         <Header />
-        <Content>
+        <SettingsContent>
           <Settings />
+        </SettingsContent>
+        <DashContent>
+          {" "}
           <Dashboard />
-        </Content>
+        </DashContent>
       </AppProvider>
     </Layout>
   );

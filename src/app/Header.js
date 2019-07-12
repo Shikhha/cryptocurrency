@@ -5,13 +5,28 @@ import { AppContext } from "./AppProvider";
 const Head = styled.div`
   display: grid;
   grid-template-columns: 100px auto 90px 90px;
+  @media only screen and (max-width: 385px) {
+    grid-template-columns: 90px auto 80px 80px;
+    
+    }
+  }
 `;
 const Logo = styled.div`
-  font-size: 1.4rem;
+  font-size: 2rem;
+  @media only screen and (max-width: 500px) {
+    font-size: 1.4rem;
+  }
+  @media only screen and (max-width: 365px) {
+    font-size: 1rem;
+  }
 `;
 
 const DisplayButton = styled.div`
   cursor: pointer;
+  align-self: center;
+  @media only screen and (max-width: 365px) {
+    font-size: 0.7rem;
+  }
   ${props =>
     props.active &&
     css`

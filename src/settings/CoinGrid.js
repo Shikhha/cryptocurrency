@@ -13,7 +13,7 @@ export const CoinGridStyled = styled.div`
 `;
 
 function coinsToDisplay(coinList, topsection, favourties) {
-  return topsection ? favourties : Object.keys(coinList).slice(0, 100);
+  return topsection ? favourties : Object.keys(coinList).slice(0, 150);
 }
 export default function({ topsection }) {
   return (

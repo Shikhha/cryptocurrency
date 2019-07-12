@@ -16,6 +16,7 @@ export default function() {
         <Pgrid>
           {prices.map((price, index) => (
             <PriceTitle
+              key={index}
               currentfav={currentfav}
               setCurrentFav={setCurrentFav}
               index={index}
