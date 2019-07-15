@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import moment from "moment";
 const cc = require("cryptocompare");
+cc.setApiKey(
+  "f0d608564947466d6d5317a53e48d8784431b7ef298a208e9c3e3cc1d35f78c3"
+);
 export const AppContext = React.createContext();
 
 const MAX_FAV = 10;

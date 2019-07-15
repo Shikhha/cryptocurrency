@@ -5,6 +5,7 @@ import { SelectableTile } from "../shared/Tile";
 import CoinTile from "./CoinTile";
 
 export const CoinGridStyled = styled.div`
+  margin-top: 10px;
   padding-top: 20px;
   padding-top: 20px;
   display: grid;
