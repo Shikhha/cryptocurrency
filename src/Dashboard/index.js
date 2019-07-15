@@ -13,7 +13,7 @@ height: 400px;
   margin-top: 20px;
   @media only screen and (max-width: 800px) {
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    height: 400px;
+    height: 300px;
     }
   }
 `;

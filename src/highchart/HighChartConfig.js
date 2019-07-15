@@ -4,10 +4,6 @@ export default function(historical) {
       text: ""
     },
 
-    subtitle: {
-      text: "Source: thesolarfoundation.com"
-    },
-
     yAxis: {
       title: {
         text: "Prices"
