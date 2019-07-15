@@ -16,11 +16,13 @@ export default class AppProvider extends Component {
       page: "Dashboard",
       favourties: ["BTC", "ETH", "XMR", "DOGE"],
       ...this.savedSettings(),
+      timeInterval: "Months",
       setPage: this.setPage,
       addCoin: this.addCoin,
       removeCoin: this.removeCoin,
       confirmFavourties: this.confirmFavourties,
-      setCurrentFav: this.setCurrentFav
+      setCurrentFav: this.setCurrentFav,
+      changeChartSelect: this.changeChartSelect
     };
   }
 
@@ -42,7 +44,7 @@ export default class AppProvider extends Component {
         name: this.state.currentfav,
         data: result.map((ticker, index) => [
           moment()
-            .subtract({ months: TIME_UNITS - index })
+            .subtract({ [this.state.timeInterval]: TIME_UNITS - index })
             .valueOf(),
           ticker.USD
         ])
