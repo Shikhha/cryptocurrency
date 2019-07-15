@@ -15,7 +15,7 @@ export default function Welcome() {
       {({ firstVisit }) =>
         firstVisit ? (
           <WelcomeDiv>
-            Welcome to Crypto-Dashboard, please SELECT & CONFIRM your favourite
+            Welcome to Crypto-Compare, please SELECT & CONFIRM your favourite
             coins to begin
           </WelcomeDiv>
         ) : null
