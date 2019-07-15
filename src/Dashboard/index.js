@@ -6,7 +6,6 @@ import CoinDetail from "./CoinDetail";
 import PriceChart from "./PriceChart";
 
 const ChartGrid = styled.div`
-height: 400px;
   display: grid;
   grid-template-columns: 240px repeat(auto-fit, minmax(240px, 1fr));
   grid-gap: 15px;
