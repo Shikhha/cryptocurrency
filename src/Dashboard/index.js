@@ -6,13 +6,14 @@ import CoinDetail from "./CoinDetail";
 import PriceChart from "./PriceChart";
 
 const ChartGrid = styled.div`
+height: 400px;
   display: grid;
   grid-template-columns: 240px repeat(auto-fit, minmax(240px, 1fr));
   grid-gap: 15px;
   margin-top: 20px;
   @media only screen and (max-width: 800px) {
-    grid-template-columns: 1fr;
-    
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    height: 400px;
     }
   }
 `;

@@ -7,14 +7,20 @@ import { AppContext } from "../app/AppProvider";
 const SpotlightName = styled.h2`
   text-align: center;
 `;
+
+const SpotTile = styled(Tile)`
+  @media only screen and (max-width: 800px) {
+    display: none;
+  }
+`;
 export default function() {
   return (
     <AppContext.Consumer>
       {({ currentfav, coinList }) => (
-        <Tile>
+        <SpotTile>
           <SpotlightName>{coinList[currentfav].CoinName}</SpotlightName>
           <CoinImage spotlight coin={coinList[currentfav]} />
-        </Tile>
+        </SpotTile>
       )}
     </AppContext.Consumer>
   );

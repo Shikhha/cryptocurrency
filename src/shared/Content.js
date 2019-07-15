@@ -15,7 +15,6 @@ export const DashContent = props => {
   return (
     <AppContext.Consumer>
       {({ prices, coinList }) => {
-        if (!coinList) return <div>Loading Coins...</div>;
         if (!prices) return <div>Loading Prices...</div>;
         else return <div>{props.children}</div>;
       }}
